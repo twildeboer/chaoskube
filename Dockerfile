@@ -2,7 +2,7 @@
 FROM golang:1.9-alpine as builder
 
 RUN apk -U add git
-WORKDIR /go/src/github.com/linki/chaoskube
+WORKDIR /go/src/github.com/twildeboer/chaoskube
 COPY . .
 RUN go test -v ./...
 RUN go build -o /bin/chaoskube -v \
@@ -10,7 +10,7 @@ RUN go build -o /bin/chaoskube -v \
 
 # final image
 FROM alpine:3.6
-MAINTAINER Linki <linki+docker.com@posteo.de>
+MAINTAINER Linki <twildeboer@autonomic.ai>
 
 RUN addgroup -S chaoskube && adduser -S -g chaoskube chaoskube
 COPY --from=builder /bin/chaoskube /bin/chaoskube

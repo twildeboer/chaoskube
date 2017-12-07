@@ -1,4 +1,4 @@
-package: github.com/linki/chaoskube
+package: github.com/twildeboer/chaoskube
 import:
 - package: github.com/sirupsen/logrus
   version: ~1.0.3

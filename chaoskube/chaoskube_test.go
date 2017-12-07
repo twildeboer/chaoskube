@@ -10,7 +10,7 @@ import (
 	"k8s.io/client-go/kubernetes/fake"
 	"k8s.io/client-go/pkg/api/v1"
 
-	"github.com/linki/chaoskube/util"
+	"github.com/twildeboer/chaoskube/util"
 )
 
 var logOutput = bytes.NewBuffer([]byte{})
