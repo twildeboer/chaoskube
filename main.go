@@ -22,7 +22,7 @@ const (
 	limitChaosOpt = "limit-chaos"
 	locationOpt   = "location"
 	offDaysOpt    = "off-days"
-	chaosHrsOpt   = "chaos-period"
+	chaosHrsOpt   = "chaos-hours"
 	holidaysOpt   = "holidays"
 
 	defaultStartHr  = 9
@@ -77,7 +77,7 @@ func init() {
 	kingpin.Flag("interval", "Interval between Pod terminations").Default("10m").DurationVar(&interval)
 	kingpin.Flag("dry-run", "If true, don't actually do anything.").Default("true").BoolVar(&dryRun)
 	kingpin.Flag("debug", "Enable debug logging.").BoolVar(&debug)
-	kingpin.Flag(limitChaosOpt, "Whether to limit chaos according to configuration. Defaults to false.").Default("true").BoolVar(&limitChaos)
+	kingpin.Flag(limitChaosOpt, "Whether to limit chaos according to configuration. Defaults to false.").Default("false").BoolVar(&limitChaos)
 	kingpin.Flag(locationOpt, `Timezone location from the "tz database" (e.g. "America/Los_Angeles", not "PDT") `+
 		`for interpreting chaos-period start and stop times. No default.`).StringVar(&locationString)
 	help := fmt.Sprintf(`Daily start and end times for introducing chaos. Defaults to "start: %d:%d, end: %d:%d".`,
@@ -134,6 +134,13 @@ func main() {
 	offcfg, err := handleOfftimeConfig(limitChaos, locationString, offDaysString, chaosHrsString, holidaysString)
 	if err != nil {
 		log.Fatal(err)
+	}
+	if offcfg.enabled {
+		log.Infof("Limiting chaos. %s: %s, %s: %s, %s: %s, %s: %s",
+			locationOpt, locationString,
+			offDaysOpt, offDaysString,
+			chaosHrsOpt, chaosHrsString,
+			holidaysOpt, holidaysString)
 	}
 
 	chaoskube := chaoskube.New(
