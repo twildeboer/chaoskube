@@ -9,7 +9,7 @@ import (
 
 const dhmsLayout = "2006-01-02 15:04:05"
 
-func Test_handleOfftimeConfig_02(t *testing.T) {
+func Test_handleOfftimeConfig_01(t *testing.T) {
 	descr := "Zero value locationStr"
 	var locationStr string
 	var offDaysStr string
@@ -27,7 +27,7 @@ func Test_handleOfftimeConfig_02(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_03(t *testing.T) {
+func Test_handleOfftimeConfig_02(t *testing.T) {
 	descr := "Unparsable locationStr"
 	var locationStr = "PDT"
 	var offDaysStr string
@@ -45,7 +45,7 @@ func Test_handleOfftimeConfig_03(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_04(t *testing.T) {
+func Test_handleOfftimeConfig_03(t *testing.T) {
 	descr := "Good timezone locationStr"
 	var locationStr = "America/Los_Angeles"
 	var offDaysStr string
@@ -62,7 +62,7 @@ func Test_handleOfftimeConfig_04(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_05(t *testing.T) {
+func Test_handleOfftimeConfig_04(t *testing.T) {
 	descr := `Use "Local" as locationStr`
 	var locationStr = "Local"
 	var offDaysStr string
@@ -79,7 +79,7 @@ func Test_handleOfftimeConfig_05(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_06(t *testing.T) {
+func Test_handleOfftimeConfig_05(t *testing.T) {
 	descr := `Unset/Empty offDays`
 	var locationStr = "UTC"
 	var offDaysStr string
@@ -109,7 +109,7 @@ func Test_handleOfftimeConfig_06(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_07(t *testing.T) {
+func Test_handleOfftimeConfig_06(t *testing.T) {
 	descr := `offDays = "none"`
 	var locationStr = "UTC"
 	var offDaysStr = "none"
@@ -139,7 +139,7 @@ func Test_handleOfftimeConfig_07(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_08(t *testing.T) {
+func Test_handleOfftimeConfig_07(t *testing.T) {
 	descr := `Bad offDays`
 	var locationStr = "UTC"
 	var offDaysStr = "Saturday, Zontag"
@@ -157,7 +157,7 @@ func Test_handleOfftimeConfig_08(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_09(t *testing.T) {
+func Test_handleOfftimeConfig_08(t *testing.T) {
 	descr := `Three off days`
 	var locationStr = "UTC"
 	var offDaysStr = "Thursday,   Monday,Friday" // various whitespace too
@@ -175,7 +175,7 @@ func Test_handleOfftimeConfig_09(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_10(t *testing.T) {
+func Test_handleOfftimeConfig_09(t *testing.T) {
 	descr := `Empty chaos hours`
 	var locationStr = "UTC"
 	var offDaysStr string
@@ -206,7 +206,7 @@ func Test_handleOfftimeConfig_10(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_11(t *testing.T) {
+func Test_handleOfftimeConfig_10(t *testing.T) {
 	descr := `chaos hours with leading zeros should be OK`
 	var locationStr = "UTC"
 	var offDaysStr string
@@ -237,7 +237,7 @@ func Test_handleOfftimeConfig_11(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_12(t *testing.T) {
+func Test_handleOfftimeConfig_11(t *testing.T) {
 	descr := `chaos hours may not span midnight`
 	var locationStr = "UTC"
 	var offDaysStr string
@@ -255,7 +255,7 @@ func Test_handleOfftimeConfig_12(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_13(t *testing.T) {
+func Test_handleOfftimeConfig_12(t *testing.T) {
 	descr := `chaos hours - bad number`
 	var locationStr = "UTC"
 	var offDaysStr string
@@ -273,7 +273,7 @@ func Test_handleOfftimeConfig_13(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_14(t *testing.T) {
+func Test_handleOfftimeConfig_13(t *testing.T) {
 	descr := `Empty holidays should be OK`
 	var locationStr = "UTC"
 	var offDaysStr string
@@ -290,7 +290,7 @@ func Test_handleOfftimeConfig_14(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_15(t *testing.T) {
+func Test_handleOfftimeConfig_14(t *testing.T) {
 	descr := `One holiday: New Years Day in Los Angeles`
 	var locationStr = "America/Los_Angeles"
 	var offDaysStr string
@@ -312,7 +312,7 @@ func Test_handleOfftimeConfig_15(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_16(t *testing.T) {
+func Test_handleOfftimeConfig_15(t *testing.T) {
 	descr := `Two holidays in Los Angeles`
 	var locationStr = "America/Los_Angeles"
 	var offDaysStr string
@@ -341,7 +341,7 @@ func Test_handleOfftimeConfig_16(t *testing.T) {
 	}
 }
 
-func Test_handleOfftimeConfig_17(t *testing.T) {
+func Test_handleOfftimeConfig_16(t *testing.T) {
 	descr := `Bad holiday string`
 	var locationStr = "UTC"
 	var offDaysStr string
