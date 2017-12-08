@@ -10,7 +10,9 @@ RUN go build -o /bin/chaoskube -v \
 
 # final image
 FROM alpine:3.6
-MAINTAINER Linki <twildeboer@autonomic.ai>
+MAINTAINER twildeboer <twildeboer@autonomic.ai>
+
+RUN apk --no-cache add tzdata
 
 RUN addgroup -S chaoskube && adduser -S -g chaoskube chaoskube
 COPY --from=builder /bin/chaoskube /bin/chaoskube
